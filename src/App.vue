@@ -1,13 +1,22 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 //import HelloWorld from './components/HelloWorld.vue'
 
 
 
 const count = ref(0)
 
+const numbers = reactive({
+  a: 0,
+  b: 0
+})
+
 const increment = () => {
   count.value++
+}
+
+const increase = (num) => {
+  numbers[num]++
 }
 
 </script>
@@ -15,6 +24,8 @@ const increment = () => {
 <template>
   <main>
     <button @click="increment">{{ count }}</button>
+    <button @click="increase('a')">{{ numbers.a }}</button>
+    <button @click="increase('b')">{{ numbers.b }}</button>
   </main>
 </template>
 
@@ -24,9 +35,9 @@ header {
 }
 
 button {
-  height: 200px;
-  width: 200px;
-  font-size: 40px;
+  height: 100px;
+  width: 100px;
+  font-size: 20px;
 }
 
 @media (min-width: 1024px) {

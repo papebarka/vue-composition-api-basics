@@ -14,7 +14,10 @@ For most part, the template works the same as in the Options API.
 
 v-model doesn't work as usually in the options API.
 
-To make use of reactivity, we have to import the reactive reference system (ref) and declare our reactive variables.
+To make use of reactivity, we have to import the reactive reference system. Vue offers two reactive systems: ref and reactive.
+After import, we declare our reactive variables.
+
+#### Ref
 
 ```js
 import { ref } from 'vue'
@@ -22,7 +25,7 @@ import { ref } from 'vue'
 const msg = ref('Hello World') // this makes msg reactive and works with v-model
 ```
 
-ref() returns an object. This means our variable (msg) is an object. To access its value, we use the notation object.value.
+ref() is used with a primitive value mostly [might take as well an object] and returns an object. This means our variable (msg) is an object. To access its value, we use the notation object.value.
 
 ```js
 import { ref } from 'vue'
@@ -44,6 +47,29 @@ console.log(msg.value)
     <p>{{ msg }}</p>
 <template>
 ```
+
+#### Reactive
+
+reactive is another way to achieve reactivity with the composition API. In contrast to ref, it takes in a complex (non primitive) data such as object as the parameter.
+
+With reactive, we don't need to use the object.value notation to get the value of our reactive data.
+
+```js
+import { reactive } from 'vue'
+
+const numbers = reactive({
+    one: 0,
+    two: 0
+}) // this makes msg reactive and works with v-model
+
+//{{ msg }} => In the background, {{ msg.value }}
+<template>
+    <p>{{ numbers.one }}</p>
+    <p>{{ numbers['two'] }}</p>
+<template>
+```
+
+reactive is similar to data() in the options API.
 
 ### Methods
 
