@@ -88,3 +88,19 @@ const hi = () => {
     // definition here
 } 
 ```
+
+### Computed properties
+
+In order to create computed properties, we have to import the computed reference from vue and wrap it around the function we'd like to use as a computed property.
+
+```js
+import { ref, computed } from 'vue'
+
+const price = ref(0)
+
+const qty = ref(0)
+
+const total = computed({
+    return price.value * qty.value
+})
+```

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 //import HelloWorld from './components/HelloWorld.vue'
 
 
@@ -7,8 +7,8 @@ import { ref, reactive } from 'vue'
 const count = ref(0)
 
 const numbers = reactive({
-  a: 0,
-  b: 0
+  one: 0,
+  two: 0
 })
 
 const increment = () => {
@@ -19,13 +19,21 @@ const increase = (num) => {
   numbers[num]++
 }
 
+const total = computed(() => {
+  return count.value + numbers.one + numbers.two
+})
+
 </script>
 
 <template>
   <main>
     <button @click="increment">{{ count }}</button>
-    <button @click="increase('a')">{{ numbers.a }}</button>
-    <button @click="increase('b')">{{ numbers.b }}</button>
+    <button @click="increase('one')">{{ numbers.one }}</button>
+    <button @click="increase('two')">{{ numbers.two }}</button>
+
+    <p class="total">
+      Total is: {{ total }}
+    </p>
   </main>
 </template>
 
@@ -37,6 +45,11 @@ header {
 button {
   height: 100px;
   width: 100px;
+  font-size: 20px;
+}
+
+.total {
+  padding: 25px;
   font-size: 20px;
 }
 
