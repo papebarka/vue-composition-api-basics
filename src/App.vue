@@ -19,8 +19,14 @@ const increase = (num) => {
   numbers[num]++
 }
 
+watch(count, (newVal) => {
+  console.log(newVal)
+})
+
 const total = computed(() => {
   return count.value + numbers.one + numbers.two
+}, {
+  immediate: true
 })
 
 </script>

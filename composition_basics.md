@@ -104,3 +104,29 @@ const total = computed({
     return price.value * qty.value
 })
 ```
+
+### watch and watchEffect
+
+watch and watchEffect are two ways to listen to our data for change and when any occurs, to trigger some actions.
+
+There are some differences. In watch, we have to specify what we want to listen to (observe) and we must specify as an option if we want immediate action. With watchEffect, we don't have to specify anything to watch for, we can pass in whatever we like.
+
+watch is seen as more specific while watchEffect is seen as more general.
+
+```js
+import { watch, watchEffect} from 'vue'
+
+const price = ref(0)
+
+const qty = ref(0)
+
+watch(price, (newVal) => {
+    console.log(`Price value has changed to ${newVal}`)
+})
+
+watchEffect(() => {
+    console.log(`Quantity has changed to ${qty}`)
+})
+```
+
+watch (watchEffect) is useful when we want to watch for change in dynamic data and maybe fetch, render data based on those changes. As an example, we can think of an :id parameter in an url (/user/:id)
