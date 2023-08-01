@@ -21,3 +21,44 @@ import { ref } from 'vue'
 
 const msg = ref('Hello World') // this makes msg reactive and works with v-model
 ```
+
+ref() returns an object. This means our variable (msg) is an object. To access its value, we use the notation object.value.
+
+```js
+import { ref } from 'vue'
+
+const msg = ref('Hello World') // this makes msg reactive and works with v-model
+console.log(msg.value)
+```
+
+To access our reactive value in the template, we don't have to use the object.value notation since Vue assumes we mostly render those reactive variables in our template and handle that process in the background for us. This is called ref unwrapping.
+
+```js
+import { ref } from 'vue'
+
+const msg = ref('Hello World') // this makes msg reactive and works with v-model
+console.log(msg.value)
+
+//{{ msg }} => In the background, {{ msg.value }}
+<template>
+    <p>{{ msg }}</p>
+<template>
+```
+
+### Methods
+
+We declare methods as in plain JS using the function definition or the ES6+ syntax (arrow function) since our methods our not in an object as in the options API.
+
+```js
+import { ref } from 'vue'
+
+const msg = ref('Hello World') // this makes msg reactive and works with v-model
+
+function hello(){
+ // definition here
+}
+
+const hi = () => {
+    // definition here
+} 
+```

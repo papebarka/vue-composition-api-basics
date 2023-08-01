@@ -4,14 +4,17 @@ import { ref } from 'vue'
 
 
 
-const msg = ref("Hello Buddies")
+const count = ref(0)
+
+const increment = () => {
+  count.value++
+}
 
 </script>
 
 <template>
   <main>
-    {{ msg }}
-    <input v-model="msg" />
+    <button @click="increment">{{ count }}</button>
   </main>
 </template>
 
@@ -20,9 +23,10 @@ header {
   line-height: 1.5;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+button {
+  height: 200px;
+  width: 200px;
+  font-size: 40px;
 }
 
 @media (min-width: 1024px) {
